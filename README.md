@@ -90,9 +90,15 @@ The container supports the following env var as configuration :
 - `REQUESTS_CA_BUNDLE`, path to a CA_BUNDLE for validation if you are using self-signed certificates(file must be included in the container)
 
 To run :
-
+Full edited command
 ```
+docker run --rm -it -e "NETBOX_URL=http://10.252.0.65:8010/" -e "NETBOX_TOKEN=555b70f4a12fc2412d93de58a8384e0d78a801d0" ghcr.io/minitriga/netbox-device-type-library-import /bin/sh -c 'pip install --upgrade pynetbox && python3 -u nb-dt-import.py'
+```
+```
+OLD Command, doesn't work
 docker run -e "NETBOX_URL=http://netbox:8080/" -e "NETBOX_TOKEN=98765434567890" ghcr.io/minitriga/netbox-device-type-library-import
+NEW solution found from Pull Request:
+docker run --rm -it -e "NETBOX_URL=http://netbox:8080/" -e "NETBOX_TOKEN=98765434567890" ghcr.io/minitriga/netbox-device-type-library-import /bin/sh -c 'pip install --upgrade pynetbox && python3 -u nb-dt-import.py'
 ```
 
 ## 🧑‍💻 Contributing
